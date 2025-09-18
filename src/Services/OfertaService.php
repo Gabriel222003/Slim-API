@@ -31,7 +31,7 @@ class OfertaService{
         $sort = $params['sort'] ?? null;
 
 
-        //Faz a filtragem dos dados com base nos parametors informados na URL. O metódo retira o elemento que retornar falso
+        //Faz a filtragem dos dados com base nos parametors informados na URL. O método retira o elemento que retornar falso
         $ofertasFiltradas = array_filter($ofertas, function($oferta) use ($level, $kind, $minPrice, $maxPrice, $search) {
 
             //Verifica se o dado é null ou se ele é diferente do array de dados
@@ -49,7 +49,7 @@ class OfertaService{
         //Ordenação dos dados com base no courseName, rating ou offeredPrice.
         if ($sort) {
             
-            /* Metódo faz comparação de dois itens do array associativo. Se o retorno for 0 o item não muda de lugar. Se for -1, A é antes de B.
+            /* Método faz comparação de dois itens do array associativo. Se o retorno for 0 o item não muda de lugar. Se for -1, A é antes de B.
             Se for 1, B antes de A */ 
             usort($ofertasFiltradas, function($a, $b) use ($sort) {
                 $valA = $a[$sort] ?? 0;
@@ -62,11 +62,11 @@ class OfertaService{
         
         //Paginação dos itens
         $comeco = (($page - 1) * $pageLimit);
-        //Metódo pega o array de itens e pega os elementos com base no inicil e fim passados
+        //Método pega o array de itens e pega os elementos com base no inicil e fim passados
         $paginacao = array_slice($ofertasFiltradas, $comeco, $pageLimit);
 
 
-        //Formatação com base no metodo formatOferta da classe Format
+        //Formatação com base no método formatOferta da classe Format
         $formatado = array_map([Format::class, 'formatOferta'], $paginacao);
 
         

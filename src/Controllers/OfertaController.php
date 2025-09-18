@@ -20,7 +20,7 @@ class OfertaController{
         //Obtem os parametros passado na URL
         $params = $request->getQueryParams();
 
-        //Chama o metódo de busca de OfertaServicel, passado os parametros capiturados
+        //Chama o método de busca de OfertaServicel, passado os parametros capiturados
         $resultado = $this->service->buscarOfertas($params);
 
 
